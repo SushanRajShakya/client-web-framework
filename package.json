@@ -1,0 +1,22 @@
+{
+  "name": "client-web-framework",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SushanRajShakya/client-web-framework.git"
+  },
+  "author": "Sushan Raj Shakya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SushanRajShakya/client-web-framework/issues"
+  },
+  "homepage": "https://github.com/SushanRajShakya/client-web-framework#readme",
+  "devDependencies": {
+    "typescript": "^4.6.4"
+  }
+}
