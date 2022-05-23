@@ -1,0 +1,14 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Bhagwan Thapa",
+      "age": 99
+    },
+    {
+      "id": 2,
+      "name": "Sita Manjolika",
+      "age": 2000
+    }
+  ]
+}
