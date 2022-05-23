@@ -1,11 +1,9 @@
 import { AxiosPromise, AxiosResponse } from 'axios';
 
-import { HasId } from '../types';
-
 interface ModelAttributes<T> {
-  set(updateInfo: T): void;
-  get<K extends keyof T>(key: K): T[K];
+  set(value: T): void;
   getAll(): T;
+  get<K extends keyof T>(key: K): T[K];
 }
 
 interface Sync<T> {
@@ -16,6 +14,10 @@ interface Sync<T> {
 interface Events {
   on(eventName: string, callback: () => void): void;
   trigger(eventName: string): void;
+}
+
+interface HasId {
+  id?: number;
 }
 
 export class Model<T extends HasId> {
@@ -29,9 +31,8 @@ export class Model<T extends HasId> {
   trigger = this.events.trigger;
   get = this.attributes.get;
 
-  set(userInfo: T): void {
-    this.attributes.set(userInfo);
-
+  set(update: T): void {
+    this.attributes.set(update);
     this.events.trigger('change');
   }
 
@@ -39,21 +40,25 @@ export class Model<T extends HasId> {
     const id = this.get('id');
 
     if (typeof id !== 'number') {
-      throw new Error('Cannot fetch without Id!');
+      throw new Error('Cannot fetch without an id');
     }
 
-    this.sync.fetch(id).then((response: AxiosResponse): void => {
-      this.set(response.data);
-    });
+    this.sync.fetch(id).then(
+      (response: AxiosResponse): void => {
+        this.set(response.data);
+      }
+    );
   }
 
   save(): void {
     this.sync
       .save(this.attributes.getAll())
-      .then((response: AxiosResponse): void => {
-        this.trigger('save');
-      })
-      .catch((err) => {
+      .then(
+        (response: AxiosResponse): void => {
+          this.trigger('save');
+        }
+      )
+      .catch(() => {
         this.trigger('error');
       });
   }

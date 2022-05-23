@@ -2,13 +2,28 @@
   "users": [
     {
       "id": 1,
-      "name": "Bhagwan Thapa",
-      "age": 99
+      "name": "newer name",
+      "age": 0
     },
     {
-      "id": 2,
-      "name": "Sita Manjolika",
-      "age": 2000
+      "name": "new record",
+      "age": 0,
+      "id": 2
+    },
+    {
+      "name": "NAME",
+      "age": 20,
+      "id": 7
+    },
+    {
+      "name": "New User",
+      "age": 20,
+      "id": 9
+    },
+    {
+      "name": "Sushan Raj Shakya",
+      "age": 56,
+      "id": 10
     }
   ]
 }
